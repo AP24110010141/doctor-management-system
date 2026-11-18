@@ -1,0 +1,519 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #dbeafe, #e0f2fe, #f8fafc);
+    min-height: 100vh;
+    color: #1e293b;
+}
+
+a {
+    text-decoration: none;
+}
+
+main {
+    width: 90%;
+    max-width: 1200px;
+    margin: 30px auto;
+}
+
+h1 {
+    margin-bottom: 20px;
+    color: #0f172a;
+}
+
+/* ── Navigation Bar ──────────────────────────────────── */
+
+nav {
+    background: linear-gradient(135deg, #0f172a, #1e3a8a);
+    padding: 18px 40px;
+    display: flex;
+    gap: 25px;
+    align-items: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+nav a {
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #93c5fd;
+}
+
+.nav-user {
+    color: #93c5fd;
+    font-weight: bold;
+    font-size: 0.95rem;
+    margin-left: auto;
+}
+
+/* ── Page Header ─────────────────────────────────────── */
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.page-header h1 {
+    margin-bottom: 0;
+}
+
+/* ── Filters Section (Search, Specialization, Fee, Sort) ── */
+
+.filters {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.filters input,
+.filters select {
+    padding: 12px 16px;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    min-width: 200px;
+    flex: 1 1 200px;
+    font-size: 15px;
+    outline: none;
+    background: white;
+    color: #1e293b;
+    font-family: inherit;
+    transition: 0.3s;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.filters input:focus,
+.filters select:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* ── Doctor Cards Grid ───────────────────────────────── */
+
+.doctors {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(37, 99, 235, 0.15);
+}
+
+.card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    transition: 0.4s;
+}
+
+.card:hover img {
+    transform: scale(1.05);
+}
+
+.card h3 {
+    padding: 15px 15px 5px;
+    color: #0f172a;
+    font-size: 1.2rem;
+}
+
+.card p {
+    padding: 4px 15px;
+    color: #64748b;
+    font-size: 0.95rem;
+}
+
+.card>a {
+    display: block;
+    margin: 10px 15px;
+    padding: 10px;
+    text-align: center;
+    background: linear-gradient(135deg, #2563eb, #06b6d4);
+    color: white;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 0.95rem;
+    transition: 0.3s;
+}
+
+.card>a:hover {
+    transform: scale(1.02);
+    box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+}
+
+.card .edit-btn {
+    background: #f1f5f9;
+    color: #2563eb;
+    border: 1px solid #cbd5e1;
+    margin-top: 0;
+}
+
+.card .edit-btn:hover {
+    background: #e2e8f0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.card button,
+.card .delete-btn {
+    display: block;
+    width: calc(100% - 30px);
+    margin: 0 15px 12px;
+    padding: 10px;
+    background: #ef4444;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.card button:hover,
+.card .delete-btn:hover {
+    background: #dc2626;
+    box-shadow: 0 5px 15px rgba(239, 68, 68, 0.3);
+}
+
+.card .favorite-btn {
+    background: linear-gradient(135deg, #f43f5e, #ec4899);
+    margin-bottom: 15px;
+}
+
+.card .favorite-btn:hover {
+    transform: scale(1.02);
+    box-shadow: 0 5px 15px rgba(244, 63, 94, 0.3);
+}
+
+.card .remove-btn {
+    background: #ef4444;
+    margin-bottom: 15px;
+}
+
+.card .remove-btn:hover {
+    background: #dc2626;
+    box-shadow: 0 5px 15px rgba(239, 68, 68, 0.3);
+}
+
+/* ── Doctor Details Page ─────────────────────────────── */
+
+.details {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.details img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin-bottom: 25px;
+}
+
+.details h1 {
+    margin-bottom: 12px;
+    color: #0f172a;
+}
+
+.details h3 {
+    margin-top: 18px;
+    color: #2563eb;
+    font-size: 1.05rem;
+}
+
+.details p {
+    margin-top: 5px;
+    line-height: 1.7;
+    color: #475569;
+}
+
+/* ── Forms (Add, Edit, Login, Register) ──────────────── */
+
+.form-container {
+    background: white;
+    padding: 35px 30px;
+    max-width: 520px;
+    margin: 30px auto;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.form-container h1 {
+    text-align: center;
+    margin-bottom: 22px;
+    color: #0f172a;
+}
+
+.form-container input,
+.form-container textarea {
+    width: 100%;
+    padding: 12px 14px;
+    margin: 10px 0;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: 0.3s;
+}
+
+.form-container input:focus,
+.form-container textarea:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.form-container button {
+    width: 100%;
+    padding: 13px;
+    margin-top: 10px;
+    background: linear-gradient(135deg, #2563eb, #06b6d4);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.form-container button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+}
+
+/* ── Auth Feedback ───────────────────────────────────── */
+
+.auth-error {
+    background: #fee2e2;
+    color: #dc2626;
+    border: 1px solid #fca5a5;
+    border-radius: 8px;
+    padding: 12px 14px;
+    margin-bottom: 14px;
+    font-size: 0.95rem;
+}
+
+.auth-link {
+    margin-top: 20px;
+    text-align: center;
+    color: #64748b;
+    font-size: 0.95rem;
+}
+
+.auth-link a {
+    color: #2563eb;
+    font-weight: bold;
+}
+
+.auth-link a:hover {
+    text-decoration: underline;
+}
+
+/* ── Home Page ───────────────────────────────────────── */
+
+.home {
+    width: 100%;
+    margin: 0 auto;
+    padding-bottom: 40px;
+}
+
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    padding: 40px 0 50px;
+}
+
+.hero-text {
+    flex: 1;
+}
+
+.hero-text h1 {
+    font-size: 2.3rem;
+    color: #0f172a;
+    margin-bottom: 18px;
+    line-height: 1.3;
+}
+
+.hero-text p {
+    font-size: 1.1rem;
+    color: #475569;
+    margin-bottom: 30px;
+    line-height: 1.7;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.btn-primary {
+    display: inline-block;
+    padding: 12px 26px;
+    background: linear-gradient(135deg, #2563eb, #06b6d4);
+    color: white;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: 0.3s;
+    text-align: center;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.35);
+}
+
+.btn-secondary {
+    display: inline-block;
+    padding: 12px 26px;
+    background: white;
+    color: #2563eb;
+    border: 2px solid #2563eb;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: 0.3s;
+    text-align: center;
+}
+
+.btn-secondary:hover {
+    background: #2563eb;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25);
+}
+
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-image img {
+    width: 100%;
+    max-width: 420px;
+    height: 380px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(37, 99, 235, 0.15);
+}
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    padding: 20px 0 40px;
+}
+
+.feature-card {
+    background: white;
+    border-radius: 15px;
+    padding: 30px 25px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
+    transition: 0.3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 30px rgba(37, 99, 235, 0.12);
+}
+
+.feature-icon {
+    font-size: 2.4rem;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.feature-card h3 {
+    color: #0f172a;
+    margin-bottom: 10px;
+    font-size: 1.15rem;
+}
+
+.feature-card p {
+    color: #64748b;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.footer {
+    text-align: center;
+    padding: 25px 0 10px;
+    color: #64748b;
+    font-size: 0.95rem;
+    border-top: 1px solid #e2e8f0;
+    margin-top: 20px;
+}
+
+/* ── Favorites Page ──────────────────────────────────── */
+
+.no-favorites {
+    color: #64748b;
+    font-size: 1.1rem;
+    margin-top: 20px;
+    padding: 40px 20px;
+    background: white;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+}
+
+/* ── Responsive ──────────────────────────────────────── */
+
+@media (max-width: 768px) {
+    nav {
+        padding: 15px 20px;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .hero {
+        flex-direction: column;
+        padding: 30px 0;
+        text-align: center;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .hero-image img {
+        max-width: 100%;
+        height: 280px;
+    }
+
+    .hero-text h1 {
+        font-size: 1.8rem;
+    }
+}

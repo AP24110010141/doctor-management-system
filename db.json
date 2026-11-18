@@ -1,0 +1,38 @@
+{
+  "doctors": [
+    {
+      "id": "1",
+      "name": "Dr. Priya Sharma",
+      "specialization": "Cardiologist",
+      "experience": 10,
+      "image": "/images/doctor2.jpeg",
+      "description": "Experienced cardiologist specializing in heart care."
+    },
+    {
+      "id": "2",
+      "name": "Dr. Rahul Verma",
+      "specialization": "Dermatologist",
+      "experience": 8,
+      "image": "/images/doctor1.jpeg",
+      "description": "Specialist in skin care and treatment."
+    },
+    {
+      "id": "3",
+      "name": "Dr. Ananya Reddy",
+      "specialization": "Neurologist",
+      "experience": 12,
+      "image": "/images/doctor4.jpeg",
+      "description": "Experienced neurologist specializing in brain and nerve disorders."
+    },
+    {
+      "id": "4",
+      "name": "Dr. Arjun Kumar",
+      "specialization": "Orthopedic",
+      "experience": 9,
+      "image": "/images/doctor3.jpeg",
+      "description": "Specialist in bone and joint care."
+    }
+  ],
+  "users": [],
+  "$schema": "./node_modules/json-server/schema.json"
+}
