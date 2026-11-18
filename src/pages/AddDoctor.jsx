@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../services/api";
@@ -7,6 +6,7 @@ function AddDoctor() {
     const [doctor, setDoctor] = useState({
         name: "",
         specialization: "",
+        experience: "",
         image: "",
         description: ""
     });
@@ -23,8 +23,12 @@ function AddDoctor() {
     async function handleSubmit(e) {
         e.preventDefault();
 
-        await api.post("/doctors", doctor);
+        const doctorToSave = {
+            ...doctor,
+            experience: Number(doctor.experience) || 0
+        };
 
+        await api.post("/doctors", doctorToSave);
         navigate("/doctors");
     }
 
@@ -37,6 +41,7 @@ function AddDoctor() {
                     type="text"
                     name="name"
                     placeholder="Doctor Name"
+                    value={doctor.name}
                     onChange={handleChange}
                     required
                 />
@@ -44,21 +49,34 @@ function AddDoctor() {
                 <input
                     type="text"
                     name="specialization"
-                    placeholder="Specialization"
+                    placeholder="Specialization (e.g. Cardiologist, Dermatologist)"
+                    value={doctor.specialization}
                     onChange={handleChange}
+                    required
+                />
+
+                <input
+                    type="number"
+                    name="experience"
+                    placeholder="Years of Experience"
+                    value={doctor.experience}
+                    onChange={handleChange}
+                    min="0"
                     required
                 />
 
                 <input
                     type="text"
                     name="image"
-                    placeholder="Image URL"
+                    placeholder="Image URL (e.g. /images/doctor1.jpeg)"
+                    value={doctor.image}
                     onChange={handleChange}
                 />
 
                 <textarea
                     name="description"
-                    placeholder="Description"
+                    placeholder="Doctor Description"
+                    value={doctor.description}
                     onChange={handleChange}
                     required
                 />
